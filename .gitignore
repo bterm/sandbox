@@ -1,0 +1,29 @@
+##
+# general
+##
+*.swp
+*~
+
+##
+# c
+##
+*.o
+
+##
+# java
+##
+*.class
+
+##
+# python
+##
+*.pyc
+
+##
+# system files
+##
+.DS_Store?
+Icon?
+._*
+Thumbs.db
+
