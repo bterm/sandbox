@@ -1,0 +1,30 @@
+SQLite wrapper to make interaction with sqlite databases on the iphone easier.
+   
+Based on sqlite wrapper by Matteo Bertozzi.
+
+Requires:
+	import libsqlite3.0.dylib
+	Add > Existing Frameworks... change dropdown to dylibs and select 'libsqlite3.0.dylib' 
+
+Usage:
+	Sqlite *sqlite = [[Sqlite alloc] init];
+
+	if (![sqlite open:@"sample.db"])
+		return;
+
+	[sqlite executeNonQuery:@"DROP TABLE test"];
+	[sqlite executeNonQuery:@"CREATE TABLE test (key TEXT NOT NULL, num INTEGER, value TEXT);"];
+	[sqlite executeNonQuery:@"INSERT INTO test VALUES (?, ?, ?);", [Sqlite createUuid], [NSNumber numberWithInt:5], @"example"];
+	[sqlite executeNonQuery:@"INSERT INTO test VALUES (?, ?, ?);", [Sqlite createUuid], [NSNumber numberWithInt:3], @"values"];
+
+	NSArray *results = [sqlite executeQuery:@"SELECT * FROM test;"];
+
+	for (NSDictionary *dictionary in results) {
+		for (NSString *key in [dictionary keyEnumerator])
+			NSLog(@"%@ %@\n", key, [dictionary objectForKey:key]]);
+		}
+	}
+		
+	[results release];
+	[sqlite release];
+

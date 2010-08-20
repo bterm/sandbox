@@ -1,29 +1,23 @@
-##
 # general
-##
 *.swp
 *~
 
-##
-# c
-##
+# c 
 *.o
 
-##
 # java
-##
 *.class
 
-##
 # python
-##
 *.pyc
 
-##
 # system files
-##
-.DS_Store?
+.DS_Store
 Icon?
 ._*
 Thumbs.db
+
+# old skool
+.svn
+.cvs
 
